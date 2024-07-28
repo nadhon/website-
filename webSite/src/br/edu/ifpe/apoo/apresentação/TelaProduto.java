@@ -104,7 +104,6 @@ public class TelaProduto {
 	}
 	private void editar() {
 		
-		
 	}
 	private void listarTodos() {
 		IControllerProduto controller = FabricaController.getControllerProduto();
