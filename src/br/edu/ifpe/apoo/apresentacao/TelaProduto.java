@@ -1,4 +1,4 @@
-package br.edu.ifpe.apoo.apresentação;
+package br.edu.ifpe.apoo.apresentacao;
 
 import java.util.List;
 import java.util.Scanner;
@@ -11,13 +11,13 @@ import br.edu.ifpe.apoo.negocio.IControllerProduto;
 public class TelaProduto {
 	Scanner scanner =  new Scanner(System.in);
 	
-	public void iniciar() throws ExcecaoNegocio{
+	public void iniciar() throws Exception {
 		while(true) {
 			exibir();
 		}
 	}
 	
-	public void exibir() throws ExcecaoNegocio {
+	public void exibir() throws Exception {
 		int opcao;
 		do {
 			System.out.println("Bem vindo(a)!");
@@ -56,7 +56,7 @@ public class TelaProduto {
 			break;
 		}
 	}
-	private void inserir() throws ExcecaoNegocio {
+	private void inserir() throws ExcecaoNegocio, Exception {
 		Produto produto = new Produto();
 		produto.setNome(this.lerString("Nome"));
 		produto.setID(this.lerInteger("ID"));
@@ -68,11 +68,8 @@ public class TelaProduto {
 		} catch (ExcecaoNegocio e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-	}
+    }
 	private String lerString(String nomeAtributo) {
 		String entrada = "";
 		while (entrada.trim().length()==0) {
