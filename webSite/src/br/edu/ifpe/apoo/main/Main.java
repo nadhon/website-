@@ -8,7 +8,12 @@ public class Main {
 	public static void main(String[] args) throws ExcecaoNegocio {
 		TelaProduto telaProduto =  new TelaProduto();
 		
-		telaProduto.exibir();
+		try {
+			telaProduto.exibir();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

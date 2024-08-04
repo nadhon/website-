@@ -25,7 +25,7 @@ public class TelaProduto {
 			System.out.println("Digite 2 para Editar o produto: ");
 			System.out.println("Digite 3 para Remover um produto: ");
 			System.out.println("Digite 4 para consultar a lista de produtos: ");
-			System.out.println("Digite 0 para Sair: ");
+			System.out.println("Digite 5 para Sair: ");
 			
 			try {
 				opcao = Integer.parseInt(scanner.nextLine());
@@ -35,7 +35,7 @@ public class TelaProduto {
 			}
 			
 		
-		} while(opcao <=0);
+		} while(opcao <0);
 		
 		switch(opcao) {
 		case 1:
@@ -48,12 +48,15 @@ public class TelaProduto {
 		case 4:
 			this.listarTodos();
 			break;
-		case 0:
+		case 5:
 			System.out.println("Saindo...");
 			break;
 		default:
 			System.out.println("Opção Inválida.");
 			break;
+		} while (opcao !=5) 
+		{
+			
 		}
 	}
 	private void inserir() throws ExcecaoNegocio, Exception {
@@ -63,12 +66,7 @@ public class TelaProduto {
 		produto.setPreço(this.lerFloat("preco"));
 		
 		IControllerProduto controller = FabricaController.getControllerProduto();
-		try {
-			controller.inserir(produto);
-		} catch (ExcecaoNegocio e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		controller.inserir(produto);
     }
 	private String lerString(String nomeAtributo) {
 		String entrada = "";
@@ -102,23 +100,16 @@ public class TelaProduto {
 	private void editar() {
 		
 	}
-	private void listarTodos() {
+	private void listarTodos() throws ExcecaoNegocio, Exception {
 		IControllerProduto controller = FabricaController.getControllerProduto();
-		try {
-			List<Produto> produtos = controller.listarTodos();
-			if (produtos==null||produtos.isEmpty()) {
-				System.out.println("Nenhum Produto Cadastrado. ");
-			} else {
-				System.out.println("Lista de Produtos: ");
-				for (Produto produto: produtos) {
-					System.out.println(produto);
-				}
+		List<Produto> produtos = controller.listarTodos();
+		if (produtos==null||produtos.isEmpty()) {
+			System.out.println("Nenhum Produto Cadastrado. ");
+		} else {
+			System.out.println("Lista de Produtos: ");
+			for (Produto produto: produtos) {
+				System.out.println(produto);
 			}
-		} catch(ExcecaoNegocio e) {
-			System.out.println("Erro ao Listar produtos: "+ e.getMessage());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 			
