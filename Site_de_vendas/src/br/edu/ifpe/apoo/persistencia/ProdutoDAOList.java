@@ -1,12 +1,28 @@
 package br.edu.ifpe.apoo.persistencia;
-
 import br.edu.ifpe.entidades.Produto;
 
-public class ProdutoDAOList {
+import java.util.ArrayList;
+import java.util.List;
 
-	public static Produto[] procuraTudo() {
-		// TODO Auto-generated method stub
-		return null;
+public class ProdutoDAOList  implements IProdutoDAO{
+	private List<Produto> lista;
+
+	private static ProdutoDAOList instancia;
+	private ProdutoDAOList(){
+		this.lista = new ArrayList<>();
 	}
+	protected static ProdutoDAOList getInstancia(){
+		if(instancia == null){
+			instancia = new ProdutoDAOList() ;
+		}
+        return instancia;
+    }
 
+	@Override
+	public void inserir(Produto produto) {
+		this.lista.add(produto) ;
+	}
+	private boolean isListEmpty(){
+		return this.lista.isEmpty();
+    }
 }
