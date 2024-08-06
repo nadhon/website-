@@ -4,19 +4,22 @@ import java.util.Optional;
 
 import br.edu.ifpe.entidades.Produto;
 
+import static java.lang.Integer.parseInt;
+
 public class produtoDAO extends GenericDAO<Object>{
 
 	public Optional<Produto> procurarPorID(String id) {
-		for(Produto p: procurarID()) {
-			if(p.getID().equals(id)) {
-				return Optional.of(p);
-			}
-		}
-		
-		return Optional.empty();
+        if (procurarID(parseInt(id)) != null) {
+            for(Produto p: procurarID(parseInt(id)))
+                if (p.getID().equals(id)) {
+                    return Optional.of(p);
+                }
+        }
+
+        return Optional.empty();
 	}
 
-	public static Produto[] procurarID() {
+	public static Produto procurarID(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
