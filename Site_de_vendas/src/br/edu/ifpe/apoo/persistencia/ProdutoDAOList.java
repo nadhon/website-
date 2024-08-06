@@ -22,6 +22,27 @@ public class ProdutoDAOList  implements IProdutoDAO{
 	public void inserir(Produto produto) {
 		this.lista.add(produto) ;
 	}
+
+	@Override
+	public List<Produto> listarTodos() {
+		return List.of();
+	}
+
+	@Override
+	public Produto buscarPorId(int id) {
+		return null;
+	}
+
+	@Override
+	public void atualizar(Produto produto) {
+
+	}
+
+	@Override
+	public void remover(int id) {
+
+	}
+
 	private boolean isListEmpty(){
 		return this.lista.isEmpty();
     }

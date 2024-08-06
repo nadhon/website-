@@ -46,13 +46,14 @@ public class TelaAluno {
      } while (opcao != 5);
  }
 	private void consultar() {
-		
+		int id = Integer.parseInt(this.lerString("ID do Produto"));
+		Produto produto = produtoDAO.buscarPorId(id);
 	}
 	private void remover() {
 		
 	}
 	private void editar() {
-		
+
 		
 	}
 	private void inserir() {
