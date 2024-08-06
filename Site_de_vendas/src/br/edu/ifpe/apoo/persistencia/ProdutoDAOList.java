@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProdutoDAOList  implements IProdutoDAO{
-	private List<Produto> lista;
+	private final List<Produto> lista;
 
 	private static ProdutoDAOList instancia;
 	private ProdutoDAOList(){
