@@ -47,8 +47,9 @@ public class TelaAluno {
  }
 	private void consultar() {
 		int id = Integer.parseInt(this.lerString("ID do Produto"));
-		Produto produto = produtoDAO.procurarID(id);
-	}
+		Produto produto;
+        produto = produtoDAO.procurarID(id);
+    }
 	private void remover() {
 		
 	}

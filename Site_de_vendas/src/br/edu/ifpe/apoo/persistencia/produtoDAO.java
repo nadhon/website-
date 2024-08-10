@@ -9,18 +9,19 @@ import static java.lang.Integer.parseInt;
 public class produtoDAO extends GenericDAO<Object>{
 
 	public Optional<Produto> procurarPorID(String id) {
-        if (procurarID(parseInt(id)) != null) {
-            for(Produto p: procurarID(parseInt(id))) {
-                if (p.getID().equals(id)) {
-                    return Optional.of(p);
-                }
-            }
-        }
-
-        return Optional.empty();
+		Produto produto = procurarID(parseInt(id));
+		if (produto != null && produto.getID().equals(id)) {
+			return Optional.of(produto);
+		}
+		return Optional.empty();
 	}
 
-	public static Produto procurarID(int id) {
+
+	public static Produto procurarID() {
+        return procurarID(0);
+    }
+
+    public static Produto procurarID(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
