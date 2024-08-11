@@ -8,24 +8,27 @@ import static java.lang.Integer.parseInt;
 
 public class produtoDAO extends GenericDAO<Object>{
 
-	public Optional<Produto> procurarPorID(String id) {
-		Produto produto = procurarID(parseInt(id));
+	private IProdutoDAO produtoDAOList;
+
+	public Optional<Produto> buscarPorId(String id) {
+		Produto produto = buscarPorId(parseInt(id));
 		if (produto != null && produto.getID().equals(id)) {
 			return Optional.of(produto);
+		} else{
+			System.out.println("Erro: Produto com ID"+ id+" não encontrado.");
+			return Optional.empty();
 		}
-		return Optional.empty();
-	}
 
 
-	public static Produto procurarID() {
-        return procurarID(0);
     }
-
-    public static Produto procurarID(int id) {
+	private static Produto procurarID() {
+        return procurarID();
+    }
+    @Override
+    public  Produto buscarPorId(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return produtoDAOList.buscarPorId(id);
 	}
-
 	public static void delete(Produto produto) {
 
 

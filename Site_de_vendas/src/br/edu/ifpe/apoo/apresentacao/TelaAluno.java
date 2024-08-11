@@ -2,12 +2,15 @@ package br.edu.ifpe.apoo.apresentacao;
 
 import java.util.Scanner;
 
+import br.edu.ifpe.apoo.execoes.ExecacaoNegocio;
+import br.edu.ifpe.apoo.negocio.FabricaController;
+import br.edu.ifpe.apoo.negocio.IControllerProduto;
 import br.edu.ifpe.apoo.persistencia.produtoDAO;
 import br.edu.ifpe.entidades.Produto;
 
 public class TelaAluno {
 	Scanner scanner = new Scanner (System.in);
-	
+
 	public void exibir() {
 		int opcao= 0;
 		do {
@@ -46,28 +49,33 @@ public class TelaAluno {
      } while (opcao != 5);
  }
 	private void consultar() {
-		int id = Integer.parseInt(this.lerString("ID do Produto"));
-		Produto produto;
-        produto = produtoDAO.procurarID(id);
+
     }
 	private void remover() {
 		
 	}
 	private void editar() {
-
-		
 	}
 	private void inserir() {
 		Produto produto = new Produto();
 		produto.setNome(this.lerString("Nome"));
 		produto.setID(this.lerString("ID"));
 		produto.setValidade(this.lerString("Data_de_Validade"));
-		produtoDAO.save(produto);
-		System.out.println("Produto inserido com sucesso");	}
+		IControllerProduto controller = FabricaController.getControllerProduto();
+		try{
+            try {
+                controller.inserir(produto);
+            } catch (ExecacaoNegocio.ExcecaoNegocio e) {
+                throw new RuntimeException(e);
+            }
+        } catch (ExecacaoNegocio exception){
+			System.out.println(exception.getMessage());
+		}
+	}
 	
 	private String lerString(String nomeAtributo) {
 		String entrada = "";
-		
+
 		while (entrada.trim().length() == 0) {
 			System.out.println("Digite o " + nomeAtributo + " do Produto: ");
 			entrada = scanner.nextLine();

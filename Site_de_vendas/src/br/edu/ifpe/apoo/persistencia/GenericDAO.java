@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class GenericDAO <T>{
-	public static ArrayList<T> bancodeDados = new ArrayList<>();
-	
+	public  ArrayList<T> bancodeDados = new ArrayList<>();
+
 	public void save(T entidade) {
 		bancodeDados.add(entidade);
 	}
@@ -23,7 +23,7 @@ public class GenericDAO <T>{
 		bancodeDados.remove(entidade);
 	}
 	
-	public static Object procurarID(int index){
+	public  Object buscarPorId(int index){
 		if (index >= 0 && index <bancodeDados.size()) {
             Optional<T> t = Optional.of(bancodeDados.get(index));
             return t;

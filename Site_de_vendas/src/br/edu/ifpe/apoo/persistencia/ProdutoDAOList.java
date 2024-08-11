@@ -11,7 +11,7 @@ public class ProdutoDAOList  implements IProdutoDAO{
 	private ProdutoDAOList(){
 		this.lista = new ArrayList<>();
 	}
-	protected static ProdutoDAOList getInstancia(){
+	public static ProdutoDAOList getInstancia(){
 		if(instancia == null){
 			instancia = new ProdutoDAOList() ;
 		}
