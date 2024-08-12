@@ -8,6 +8,8 @@ public class ProdutoDAOList  implements IProdutoDAO{
 	private final List<Produto> lista;
 
 	private static ProdutoDAOList instancia;
+	private br.edu.ifpe.entidades.Produto Produto;
+
 	private ProdutoDAOList(){
 		this.lista = new ArrayList<>();
 	}
@@ -30,7 +32,7 @@ public class ProdutoDAOList  implements IProdutoDAO{
 
 	@Override
 	public Produto buscarPorId(int id) {
-		return null;
+		return Produto;
 	}
 
 	@Override

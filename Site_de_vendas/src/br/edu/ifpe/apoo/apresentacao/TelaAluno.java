@@ -5,7 +5,6 @@ import java.util.Scanner;
 import br.edu.ifpe.apoo.execoes.ExecacaoNegocio;
 import br.edu.ifpe.apoo.negocio.FabricaController;
 import br.edu.ifpe.apoo.negocio.IControllerProduto;
-import br.edu.ifpe.apoo.persistencia.produtoDAO;
 import br.edu.ifpe.entidades.Produto;
 
 public class TelaAluno {
@@ -49,6 +48,7 @@ public class TelaAluno {
      } while (opcao != 5);
  }
 	private void consultar() {
+
 
     }
 	private void remover() {

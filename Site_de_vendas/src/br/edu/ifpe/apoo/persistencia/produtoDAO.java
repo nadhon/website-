@@ -12,7 +12,7 @@ public class produtoDAO extends GenericDAO<Object>{
 
 	public Optional<Produto> buscarPorId(String id) {
 		Produto produto = buscarPorId(parseInt(id));
-		if (produto != null && produto.getID().equals(id)) {
+		if (produto != null && produto.getID(this.lerString("ID")).equals(id)) {
 			return Optional.of(produto);
 		} else{
 			System.out.println("Erro: Produto com ID"+ id+" não encontrado.");
@@ -21,16 +21,17 @@ public class produtoDAO extends GenericDAO<Object>{
 
 
     }
-	private static Produto procurarID() {
-        return procurarID();
+
+	private String lerString(String id) {
+        return id;
     }
-    @Override
+
+	@Override
     public  Produto buscarPorId(int id) {
 		// TODO Auto-generated method stub
 		return produtoDAOList.buscarPorId(id);
 	}
 	public static void delete(Produto produto) {
-
 
 	}
 

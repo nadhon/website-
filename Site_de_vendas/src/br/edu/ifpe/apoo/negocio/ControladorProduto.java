@@ -10,7 +10,7 @@ public class ControladorProduto implements IControllerProduto{
 
     public void inserir(Produto produto) throws ExecacaoNegocio{
         if (!this.isValido(produto)){
-            throw new ExecacaoNegocio("Aluno inválido!");
+            throw new ExecacaoNegocio("Produto inserido!");
         }
         IProdutoDAO dao = ProdutoDAOList.getInstancia();
         dao.inserir(produto);

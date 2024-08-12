@@ -15,7 +15,7 @@ public class Produto {
 		this.nome = nome;
 	}
 
-	public String getID() {
+	public String getID(String id) {
 		return ID;
 	}
 
