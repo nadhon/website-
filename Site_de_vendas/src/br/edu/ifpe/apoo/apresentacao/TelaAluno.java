@@ -49,7 +49,6 @@ public class TelaAluno {
  }
 	private void consultar() {
 
-
     }
 	private void remover() {
 		
@@ -76,7 +75,7 @@ public class TelaAluno {
 	private String lerString(String nomeAtributo) {
 		String entrada = "";
 
-		while (entrada.trim().length() == 0) {
+		while (entrada.trim().isEmpty()) {
 			System.out.println("Digite o " + nomeAtributo + " do Produto: ");
 			entrada = scanner.nextLine();
 		}

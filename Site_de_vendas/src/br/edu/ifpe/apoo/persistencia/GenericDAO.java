@@ -27,8 +27,7 @@ public class GenericDAO <T>{
 	
 	public  Object buscarPorId(int index){
 		if (index >= 0 && index <ProdutoDAOList.size()) {
-            Optional<T> t = Optional.of(ProdutoDAOList.get(index));
-            return t;
+            return Optional.of(ProdutoDAOList.get(index));
 		} else return Optional.empty();
 	}
 	
