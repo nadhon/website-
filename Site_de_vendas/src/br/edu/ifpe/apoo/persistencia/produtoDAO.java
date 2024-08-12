@@ -12,7 +12,7 @@ public class produtoDAO extends GenericDAO<Object>{
 
 	public Optional<Produto> buscarPorId(String id) {
 		Produto produto = buscarPorId(parseInt(id));
-		if (produto != null && produto.getID(this.lerString("ID")).equals(id)) {
+		if (produto != null && produto.getID().equals(id)) {
 			return Optional.of(produto);
 		} else{
 			System.out.println("Erro: Produto com ID"+ id+" não encontrado.");

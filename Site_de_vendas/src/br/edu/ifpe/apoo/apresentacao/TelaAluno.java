@@ -10,7 +10,7 @@ import br.edu.ifpe.entidades.Produto;
 public class TelaAluno {
 	Scanner scanner = new Scanner (System.in);
 
-	public void exibir() {
+	public void exibir() throws ExecacaoNegocio, ExecacaoNegocio.ExcecaoNegocio {
 		int opcao= 0;
 		do {
 			System.out.println("Bem vindo(a)");
@@ -47,14 +47,34 @@ public class TelaAluno {
          }
      } while (opcao != 5);
  }
-	private void consultar() {
+	private void consultar() throws ExecacaoNegocio {
+		String id =  this.lerString("ID");
+		IControllerProduto Controller = FabricaController.getControllerProduto();
+        Produto produto = Controller.consultar(id);
+        if(produto != null){
+            System.out.println("Produto encontrado: ");
+            System.out.println("Nome: "+produto.getNome());
+            System.out.println("ID: "+ produto.getID());
+            System.out.println("Data de Validade: "+produto.getValidade());
+
+        }
 
     }
-	private void remover() {
-		
-	}
-	private void editar() {
-	}
+	private void remover() throws ExecacaoNegocio {
+		String id = this.lerString("ID");
+		IControllerProduto controller = FabricaController.getControllerProduto();
+        controller.remover(id);
+        System.out.println("Produto removido com sucesso.");
+    }
+	private void editar() throws ExecacaoNegocio.ExcecaoNegocio {
+		String id = this.lerString("ID");
+		Produto produto = new Produto();
+		produto.setNome(this.lerString("Nome"));
+		produto.setID(this.lerString("ID"));
+		produto.setValidade(this.lerString("Data_de_Validade"));
+		IControllerProduto Controller = FabricaController.getControllerProduto();
+        Controller.editar(produto);
+    }
 	private void inserir() {
 		Produto produto = new Produto();
 		produto.setNome(this.lerString("Nome"));

@@ -15,6 +15,22 @@ public class ControladorProduto implements IControllerProduto{
         IProdutoDAO dao = ProdutoDAOList.getInstancia();
         dao.inserir(produto);
     }
+
+    @Override
+    public Produto consultar(String id) {
+        return null;
+    }
+
+    @Override
+    public void remover(String id) {
+
+    }
+
+    @Override
+    public void editar(Produto produto) {
+
+    }
+
     private boolean isValido(Produto produto){
 
         return false;

@@ -15,7 +15,7 @@ public class Produto {
 		this.nome = nome;
 	}
 
-	public String getID(String id) {
+	public String getID() {
 		return ID;
 	}
 
@@ -30,7 +30,7 @@ public class Produto {
 	public void setValidade(String validade) {
 		this.validade = validade;
 	}
-	
-	
+
+
 
 }
