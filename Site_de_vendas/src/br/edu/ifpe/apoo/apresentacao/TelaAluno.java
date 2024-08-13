@@ -1,14 +1,17 @@
 package br.edu.ifpe.apoo.apresentacao;
 
+import java.util.List;
 import java.util.Scanner;
 
 import br.edu.ifpe.apoo.execoes.ExecacaoNegocio;
 import br.edu.ifpe.apoo.negocio.FabricaController;
 import br.edu.ifpe.apoo.negocio.IControllerProduto;
+import br.edu.ifpe.apoo.persistencia.FachadaPersistencia;
 import br.edu.ifpe.entidades.Produto;
 
 public class TelaAluno {
 	Scanner scanner = new Scanner (System.in);
+	private br.edu.ifpe.entidades.Produto Produto;
 
 	public void exibir() throws ExecacaoNegocio, ExecacaoNegocio.ExcecaoNegocio {
 		int opcao= 0;
@@ -48,16 +51,19 @@ public class TelaAluno {
      } while (opcao != 5);
  }
 	private void consultar() throws ExecacaoNegocio {
-		String id =  this.lerString("ID");
-		IControllerProduto Controller = FabricaController.getControllerProduto();
-        Produto produto = Controller.consultar(id);
-        if(produto != null){
-            System.out.println("Produto encontrado: ");
-            System.out.println("Nome: "+produto.getNome());
-            System.out.println("ID: "+ produto.getID());
-            System.out.println("Data de Validade: "+produto.getValidade());
+		List<Produto> produtos = FachadaPersistencia.listaTudo();
+        assert produtos != null;
+        if(produtos.isEmpty()) System.out.println("lista vazia.");
+        else{
+			System.out.println("Produtos cadastrados: ");
+			for (Produto produto : produtos){
+				System.out.println("Nome: "+produto.getNome());
+				System.out.println("ID: "+produto.getID());
+				System.out.println("Data de validade: "+produto.getValidade());
+				System.out.println("------------------------------");
+			}
+		}
 
-        }
 
     }
 	private void remover() throws ExecacaoNegocio {

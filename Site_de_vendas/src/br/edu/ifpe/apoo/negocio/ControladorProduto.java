@@ -5,6 +5,8 @@ import br.edu.ifpe.apoo.persistencia.IProdutoDAO;
 import br.edu.ifpe.apoo.persistencia.ProdutoDAOList;
 import br.edu.ifpe.entidades.Produto;
 
+import java.util.List;
+
 public class ControladorProduto implements IControllerProduto{
     private Object FabricaDAO;
 
@@ -17,8 +19,8 @@ public class ControladorProduto implements IControllerProduto{
     }
 
     @Override
-    public Produto consultar(String id) {
-        return null;
+    public Produto consultar(String id, Produto Produto) {
+        return Produto;
     }
 
     @Override
@@ -29,6 +31,11 @@ public class ControladorProduto implements IControllerProduto{
     @Override
     public void editar(Produto produto) {
 
+    }
+
+    @Override
+    public List<Produto> listar() {
+        return List.of();
     }
 
     private boolean isValido(Produto produto){

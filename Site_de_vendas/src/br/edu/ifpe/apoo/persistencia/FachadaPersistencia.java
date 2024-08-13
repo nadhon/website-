@@ -8,5 +8,8 @@ public interface FachadaPersistencia {
     void inserirProduto(Produto produto);
     void editarProduto(Produto produto);
     void removerProduto(int id);
-    List<Produto> listaTudo();
+
+    static List<Produto> listaTudo() {
+        return null;
+    }
 }
